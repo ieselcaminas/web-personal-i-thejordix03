@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Autores{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+<form method="get" action="{{ path('autor_index') }}" class="d-flex mb-3">
+    <input type="text" class="form-control me-2"
+           name="search" placeholder="Buscar autor..."
+           value="{{ search }}">
+    <button class="btn btn-primary" type="submit">Buscar</button>
+</form>
+
+    <h1 class="mb-4 text-center">Lista de Autores</h1>
+    <a href="http://127.0.0.1:8001/" class="btn btn-secondary mb-3">⬅️ Volver al menú</a>
+
+    <a href="{{ path('autor_nuevo') }}" class="btn btn-success mb-3">➕ Añadir Autor</a>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>País</th>
+                <th>Fecha de nacimiento</th>
+                <th>Nº Mangas</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for autor in autores %}
+                <tr>
+                    <td>{{ autor.id }}</td>
+                    <td>{{ autor.nombre }}</td>
+                    <td>{{ autor.pais ?: '—' }}</td>
+                    <td>{{ autor.fechaNacimiento ? autor.fechaNacimiento|date('d/m/Y') : '—' }}</td>
+                    <td>{{ autor.mangas|length }}</td>
+                    <td>
+                        <a href="{{ path('autor_editar', {id: autor.id}) }}" class="btn btn-primary btn-sm"> Editar</a>
+                        <a href="{{ path('autor_eliminar', {id: autor.id}) }}" class="btn btn-danger btn-sm"
+                           onclick="return confirm(' ¿Estás seguro de que quieres eliminar este autor?');">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">No hay autores registrados</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

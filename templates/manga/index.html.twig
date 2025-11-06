@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Mangas{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+<form method="get" action="{{ path('manga_index') }}" class="d-flex mb-3">
+    <input type="text" class="form-control me-2"
+           name="search" placeholder="Buscar manga..."
+           value="{{ search }}">
+    <button class="btn btn-primary" type="submit">Buscar</button>
+</form>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="mb-0"> Lista de Mangas ({{ mangas|length }})</h1>
+        <a href="http://127.0.0.1:8001/" class="btn btn-secondary mb-3">⬅ Volver al menú</a>
+
+        <a href="{{ path('manga_nuevo') }}" class="btn btn-success"> Añadir Manga</a>
+    </div>
+
+    {% if mangas is empty %}
+        <div class="alert alert-warning text-center">
+             No hay mangas registrados todavía.  
+            <a href="{{ path('manga_nuevo') }}" class="alert-link">Crear el primero</a>
+        </div>
+    {% else %}
+        <table class="table table-striped table-bordered shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Género</th>
+                    <th>Fecha Publicación</th>
+                    <th>Autor</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for manga in mangas %}
+                <tr>
+                    <td>{{ manga.id }}</td>
+                    <td>{{ manga.titulo }}</td>
+                    <td>{{ manga.genero ?: '—' }}</td>
+                    <td>{{ manga.fechaPublicacion ? manga.fechaPublicacion|date('d/m/Y') : '—' }}</td>
+                    <td>
+                        <a href="{{ path('autor_editar', {id: manga.autor.id}) }}" class="text-decoration-none">
+                            {{ manga.autor.nombre }}
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{{ path('manga_editar', {id: manga.id}) }}" class="btn btn-sm btn-warning">✏️ Editar</a>
+                        <a href="{{ path('manga_eliminar', {id: manga.id}) }}" 
+                           class="btn btn-sm btn-danger"
+                           onclick="return confirm('¿Seguro que deseas eliminar este manga? 🚨');">
+                             Eliminar
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Manga Library{% endblock %}
+
+{% block body %}
+<div class="container mt-5 text-center">
+    <h1 class="display-3 mb-4"> Manga Library</h1>
+    <p class="lead mb-5">¡Explora tus autores y mangas favoritos!</p>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+            <a href="{{ path('autor_index') }}" class="btn btn-primary btn-lg w-100">
+                 Autores
+            </a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="{{ path('manga_index') }}" class="btn btn-success btn-lg w-100">
+                 Mangas
+            </a>
+        </div>
+    </div>
+
+    <footer class="mt-5">
+        <small class="text-muted">&copy; 2025 Manga Library</small>
+    </footer>
+</div>
+{% endblock %}

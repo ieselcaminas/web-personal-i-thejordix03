@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% set esEdicion = formulario.vars.data.id is defined %}
+
+{% block title %}{{ esEdicion ? 'Editar Manga' : 'Nuevo Manga' }}{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4 text-center">
+        {{ esEdicion ? '✏️ Editar Manga' : '➕ Nuevo Manga' }}
+    </h1>
+
+    <div class="card shadow p-4">
+        {{ form_start(formulario) }}
+
+        <div class="mb-3">
+            {{ form_label(formulario.titulo, 'Título', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(formulario.titulo, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(formulario.genero, 'Género', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(formulario.genero, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(formulario.fechaPublicacion, 'Fecha de Publicación', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(formulario.fechaPublicacion, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(formulario.autor, 'Autor', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(formulario.autor, {'attr': {'class': 'form-select'}}) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            {{ esEdicion ? 'Guardar Cambios' : 'Crear Manga' }}
+        </button>
+
+        <a href="{{ path('manga_index') }}" class="btn btn-secondary">⬅️ Volver</a>
+
+        {{ form_end(formulario) }}
+    </div>
+</div>
+{% endblock %}
