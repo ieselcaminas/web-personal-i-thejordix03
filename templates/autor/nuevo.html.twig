@@ -10,17 +10,27 @@
 
     <div class="card shadow p-4">
         {{ form_start(formulario) }}
+
         <div class="mb-3">
             {{ form_label(formulario.nombre, 'Nombre', {'label_attr': {'class': 'form-label'}}) }}
             {{ form_widget(formulario.nombre, {'attr': {'class': 'form-control'}}) }}
         </div>
-        <div class="mb-3">
-            {{ form_label(formulario.pais, 'Pais', {'label_attr': {'class': 'form-label'}}) }}
-            {{ form_widget(formulario.pais, {'attr': {'class': 'form-control'}}) }}
 
+        <div class="mb-3">
+            {{ form_label(formulario.pais, 'País', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(formulario.pais, {'attr': {'class': 'form-control'}}) }}
         </div>
-        <button type="submit" class="btn btn-primary">{{ formulario.vars.value.id ? 'Guardar Cambios' : 'Crear Autor' }}</button>
+
+        <div class="mb-3">
+            {{ form_label(formulario.fechaNacimiento, 'Fecha de nacimiento', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(formulario.fechaNacimiento, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            {{ formulario.vars.value.id ? 'Guardar Cambios' : 'Crear Autor' }}
+        </button>
         <a href="{{ path('autor_index') }}" class="btn btn-secondary">⬅️ Volver</a>
+
         {{ form_end(formulario) }}
     </div>
 </div>
