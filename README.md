@@ -11,4 +11,12 @@ Se puede gestionar (listar, ver, crear, editar y borrar):
 
 -Mangas (con título, género,un autor asignado,fecha de creación).
 
-*he entrado asi desde la terminal dentro de la carpeta: php -S 127.0.0.1:8001 -t public ya que la que hemos usado me salia en uso(127.0.0.1:8000)
+Para poder ejecutarlo:
+1.Clona el repositorio: git clone https://github.com/ieselcaminas/web-personal-i-thejordix03.git
+cd web-personal-i-thejordix03
+
+2.Instala dependencias composer dentro de la carpeta clonada: composer install
+
+3.El proyecto usa Node.js/Webpack Encore, también ejecutaría: npm install y npm run dev
+
+4.Ejecutar en el servidor local: php -S 127.0.0.1:8000 -t public 
