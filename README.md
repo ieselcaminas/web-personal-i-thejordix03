@@ -11,7 +11,8 @@ Se puede gestionar (listar, ver, crear, editar y borrar):
 
 -Mangas (con título, género,un autor asignado,fecha de creación).
 
-Para poder ejecutarlo:
+--------------Guia paso a paso para poder ejecutarlo ----------
+
 1.Clona el repositorio: git clone https://github.com/ieselcaminas/web-personal-i-thejordix03.git
 cd web-personal-i-thejordix03
 
