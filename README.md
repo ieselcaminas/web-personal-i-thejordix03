@@ -18,6 +18,6 @@ cd web-personal-i-thejordix03
 
 2.Instala dependencias composer dentro de la carpeta clonada: composer install
 
-3.El proyecto usa Node.js/Webpack Encore, también ejecutaría: npm install y npm run dev
+3.El proyecto usa Node.js/Webpack Encore.Asi que ejecutaría: npm install |||| También usa : npm run dev
 
 4.Ejecutar en el servidor local: php -S 127.0.0.1:8000 -t public 
